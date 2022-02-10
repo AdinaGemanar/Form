@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>fieldset</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://helios.utcluj.ro/cosmin/WEB/CSS/style.css">
+
+<script>
+function f1(){
+ var empt1 = document.forms["form1"]["firstname"].value;      //verificam daca campurile sunt goale
+ var empt2 = document.forms["form1"]["lastname"].value;
+ var empt3 = document.forms["form1"]["email1"].value;
+ var empt4 = document.forms["form1"]["t1"].value;
+   if (empt1 == "" || empt2 == "" || empt3 == "" || empt4 == "") {
+      alert("Please complete all fields!");
+      return false;
+   } else {
+      alert('Form accepted!');
+      return true;
+   }}
+   
+   
+   function validateAge(event) {
+        // Store value of date of birth field
+        let dateOfBirthFieldValue = document.getElementById("date1").value;
+        let bday = new Date(dateOfBirthFieldValue);
+        let todayDate = new Date();
+        let timeDiff = Math.abs(todayDate.getTime() - bday.getTime());
+        let diffyears = Math.ceil(timeDiff / (1000 * 3600 * 24)/365); 
+        if( diffyears > 18)
+       alert("Minor!")	;	// or you can change value according to your requirement
+    }
+</script>
+
+</head>
+
+<body>
+
+<h2>formular</h2>
+
+<form name="form1" action="https://helios.utcluj.ro/cosmin/WEB/responders/post_responder.php" target="_blank" method="POST">
+  <fieldset>
+    <legend>Date personale</legend>
+    Prenume:<br>
+    <input type="text" name="firstname">
+    <br><br>
+    Nume:<br>
+    <input type="text" name="lastname" >
+    <br><br>
+    Sex:<br>
+	<input type="radio" name="sex" id="s1" value="male" checked> barbat<br>
+    <input type="radio" name="sex" id="s2" value="female"> femeie<br>
+    <input type="radio" name="sex" id="s3" value="other"> prefer sa nu spun<br><br>
+	<br>
+	Data nasterii:<br>
+	<input type="date" name="date1" id="date1" >
+	<br><br>
+	Email:<br>
+	<input type="email" name="email1" id="email1">
+	<br><br>
+	Telefon:<br>
+	maxim 10 cifre<br>
+	<input type="tel" pattern="[0-9]{10}" name="t1" id="t1">
+	<br><br>
+	Cunostinte de programare:<br>
+	<select name="limbaje" id="limbaje">
+    <option value="C/C++">C/C++</option>
+    <option value="js">JavaScript</option>
+    <option value="python">Python</option>
+    </select>
+	<br><br>
+	Observatii:<br>
+	<textarea id="input1" rows="3" cols="20">scrie...</textarea>
+  </fieldset>
+ <input type="submit" name="submit" value="Trimite" onClick="f1()">
+</form>
+
+
+</body>
+</html>
